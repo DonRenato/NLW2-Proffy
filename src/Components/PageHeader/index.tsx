@@ -7,22 +7,24 @@ import './styles.css';
 
 interface PageHeaderProps{
     title: string;
+    description?: string //?: -> fazer o campo não ser obrigatório
 }
 
 
-const PageHeader: React.FC<PageHeaderProps> = ({ title, children }) => {
+const PageHeader: React.FC<PageHeaderProps> = ({ title, children, description }) => {
     return(
         <header className="page-header">
                 <div className="top-bar-container">
                     <Link to="/">
-                        <img src={backIcon} alt="voltar"/>
+                        <img src={ backIcon } alt="voltar"/>
                     </Link>
-                    <img src={logoIcon} alt="proffy"/>
+                    <img src={ logoIcon } alt="proffy"/>
                 </div>
 
                 <div className="header-content">
                     <strong>{title}</strong>
-                    {children}
+                    { description && <p>{ description }</p>}
+                    { children }
                 </div>
             </header>
     );
