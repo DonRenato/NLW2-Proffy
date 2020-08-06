@@ -6,6 +6,7 @@ import Input from '../../Components/Input';
 import TextArea from '../../Components/TextArea';
 import Select from '../../Components/Select';
 import api from '../../services/api';
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -16,7 +17,7 @@ function TeacherForm(){
     const [bio, setBio] = useState('');
     const [subject, setSubject] = useState('');
     const [cost, setCost] = useState('');
-    
+    const history = useHistory();
 
     const [scheduleItems, setScheduleItems] = useState([
         { weekday:0, from: '', to: '' }
@@ -50,19 +51,7 @@ function TeacherForm(){
             console.log(e);
             alert(('Erro no cadastro'));
         })
-        
-
-        console.log({
-            name,
-            avatar,
-            whatsapp,
-            bio,
-            subject,
-            cost,
-            scheduleItems
-        })
-         
-
+        history.push('/');
     }
 
     function setScheduleItemValue(position: number, field: string, value: string){
