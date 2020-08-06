@@ -84,7 +84,7 @@ function TeacherList(){
             </PageHeader>
             <main>
                {teachers.map(teacher => (
-                    <TeacherItem />)             
+                    <TeacherItem  teacher={teacher}/>)             
                )}
             </main>
         </div>
