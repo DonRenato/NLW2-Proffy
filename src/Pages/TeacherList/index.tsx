@@ -1,12 +1,11 @@
 import React, { useState, FormEvent } from 'react';
 import PageHeader from '../../Components/PageHeader';
-import TeacherItem from '../../Components/TeacherItem';
+import TeacherItem, { Teacher } from '../../Components/TeacherItem';
 import Input from '../../Components/Input';
 import Select from '../../Components/Select';
 import api from '../../services/api';
 
 import './styles.css';
-
 
 
 function TeacherList(){
@@ -83,8 +82,8 @@ function TeacherList(){
                 </form>
             </PageHeader>
             <main>
-               {teachers.map(teacher => (
-                    <TeacherItem  teacher={teacher}/>)             
+               {teachers.map(( teacher: Teacher) => (
+                    <TeacherItem  key={teacher.id} teacher={teacher}/>)             
                )}
             </main>
         </div>
