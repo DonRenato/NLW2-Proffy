@@ -13,12 +13,23 @@ function TeacherList(){
     const [subject, setSubject] = useState('');
     const [weekday, setWeekday] = useState('');
     const [time, setTime] = useState('');
+    const [teachers, setTeacher] = useState([]);
 
-    function searchTeachers(e: FormEvent){
+    async function searchTeachers(e: FormEvent){
         e.preventDefault();
-        console.log('a');
-        
+
+        const res = await api.get('/classes', {
+            params:{
+                subject,
+                weekday,
+                time
+            }
+        });
+
+       setTeacher(res.data);
     }
+
+       
 
     return(
         <div id="page-teacher-list" className="container">
@@ -72,16 +83,10 @@ function TeacherList(){
                 </form>
             </PageHeader>
             <main>
-                <TeacherItem />
-                <TeacherItem />
-                <TeacherItem />
-                <TeacherItem />
-                <TeacherItem />
-                <TeacherItem />
+               {teachers.map(teacher => (
+                    <TeacherItem />)             
+               )}
             </main>
-            
-
-            
         </div>
     );
 }
